@@ -1,0 +1,6 @@
+.idea
+**/*/*.env
+**/*/gadm_cache/
+**/*/generated_plot/
+**/*/dist/
+**/*/_*/

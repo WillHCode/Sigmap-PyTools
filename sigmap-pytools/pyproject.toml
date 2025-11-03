@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sigmap-pytools"
+version = "0.0.1"
+authors = [
+  { name="Hubaux William" },
+]
+description = "Python package for spatial data processing and geometric manipulation tools."
+readme = "../README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research"
+]
+license = {text = "BSD 3-Clause"}
+license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "geopandas>=1.1.1",
+    "shapely>=2.1.2",
+    "requests>=2.32.5",
+    "numpy>=2.3.3",
+    "pandas>=2.3.3",
+    "matplotlib",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sigmap"]
+
+[project.urls]
+Homepage = "https://github.com/WillHCode/Sigmap-PyTools"
+Documentation = "https://sigmap-pytools.readthedocs.io/"
+Issues = "https://github.com/WillHCode/Sigmap-PyTools/issues"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-book-theme>=1.0.0",
+    "sphinx-autodoc-typehints>=1.24.0",
+]
