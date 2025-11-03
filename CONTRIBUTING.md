@@ -51,28 +51,35 @@ Thank you for your interest in contributing to sigmap-pytools! This document pro
 
 1. Ensure your code passes all tests
 2. Update documentation if needed
-3. Add a clear description of your changes
-4. Reference any related issues
-5. Ensure your branch is up to date with main
+3. Open a Pull Request using our [pull request template](.github/pull_request_template.md)
+4. Fill out all relevant sections in the PR template
+5. Reference any related issues
+6. Ensure your branch is up to date with main
 
 ## Reporting Issues
 
-When reporting issues, please include:
+We use issue templates to help gather all necessary information. When reporting bugs:
 
-- A clear description of the problem
-- Steps to reproduce the issue
-- Expected vs actual behavior
-- Python version and environment details
-- Relevant error messages or tracebacks
+- Use our [bug report template](https://github.com/WillHCode/Sigmap-PyTools/issues/new?template=bug_report.md)
+- Include a clear description of the problem
+- Provide steps to reproduce the issue
+- Include expected vs actual behavior
+- Specify Python version and environment details
+- Include relevant error messages or tracebacks
 
 ## Feature Requests
 
-For feature requests, please:
+We welcome feature requests! To suggest a new feature:
 
+- Use our [feature request template](https://github.com/WillHCode/Sigmap-PyTools/issues/new?template=feature_request.md)
 - Describe the feature clearly
-- Explain the use case
+- Explain the use case and benefits
 - Discuss possible implementation approaches
 - Consider backwards compatibility
+
+## Security Issues
+
+If you discover a security vulnerability, please **do not** open a public issue. Instead, please refer to our [Security Policy](.github/SECURITY.md) for instructions on how to report security issues responsibly.
 
 ## Questions?
 

@@ -332,8 +332,8 @@ This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICE
 
 ## 🤝 Support
 
-Questions about using sigmap-pytools may be asked by opening a discussion.
-
-Bugs may be reported at the [GitHub issues page](https://github.com/WillHCode/Sigmap-PyTools/issues).
-
-Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+- **Questions**: Ask questions by opening a [GitHub discussion](https://github.com/WillHCode/Sigmap-PyTools/discussions)
+- **Bug Reports**: Report bugs using our [bug report template](https://github.com/WillHCode/Sigmap-PyTools/issues/new?template=bug_report.md)
+- **Feature Requests**: Suggest new features using our [feature request template](https://github.com/WillHCode/Sigmap-PyTools/issues/new?template=feature_request.md)
+- **Security Issues**: Please review our [Security Policy](.github/SECURITY.md) for responsible disclosure
+- **Contributions**: Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md)

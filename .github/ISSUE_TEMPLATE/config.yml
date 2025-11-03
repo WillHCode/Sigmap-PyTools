@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/WillHCode/Sigmap-PyTools/discussions
+    about: Ask questions or discuss ideas with the community
+  - name: Documentation
+    url: https://sigmap-pytools.readthedocs.io/en/latest/
+    about: Check the documentation for usage examples and API reference
