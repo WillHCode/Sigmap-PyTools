@@ -5,7 +5,7 @@ import pytest
 import logging
 import sys
 from io import StringIO
-from sigmap.polygeohasher.logger import ColorFormatter
+from src.sigmap.polygeohasher.logger import ColorFormatter
 
 
 class TestColorFormatter:

@@ -12,7 +12,7 @@ import geopandas as gpd
 import pytest
 from shapely.geometry import box
 
-from sigmap.polygeohasher.utils.gadm_download import (
+from src.sigmap.polygeohasher.utils.gadm_download import (
     check_already_exist,
     load_country_from_path,
     clear_gadm_temp_files,
@@ -292,7 +292,7 @@ class TestClearGadmTempFiles:
 class TestMockDownloadGadmCountry:
     """Test download_gadm_country with mocking"""
     
-    @patch('sigmap.polygeohasher.utils.gadm_download.requests.get')
+    @patch('src.sigmap.polygeohasher.utils.gadm_download.requests.get')
     def test_download_new_country(self, mock_get, temp_dir):
         """Test downloading a new country"""
 

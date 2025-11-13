@@ -11,7 +11,7 @@ matplotlib.use('Agg')  # Non-interactive backend
 import geopandas as gpd
 from shapely.geometry import box
 
-from sigmap.polygeohasher.plot_geohash_coverage import (
+from src.sigmap.polygeohasher.plot_geohash_coverage import (
     plot_geohash_coverage,
     plot_geohash_comparison,
     plot_level_statistics

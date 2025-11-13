@@ -58,7 +58,7 @@ def example_3_from_coverage_result():
     logger.info("=" * 60)
 
     # Load country
-    country_gdf = download_gadm_country("LUX", cache_dir='./gadm_cache')  # Luxembourg (small)
+    country_gdf = download_gadm_country("LUX", cache_dir='../gadm_cache')  # Luxembourg (small)
     country_geom = build_single_multipolygon(country_gdf)
 
     # Generate single-level coverage
@@ -144,7 +144,7 @@ def example_7_coverage_to_multipolygon():
     logger.info("=" * 60)
 
     # Load country
-    country_gdf = download_gadm_country("LUX", cache_dir='./gadm_cache')
+    country_gdf = download_gadm_country("LUX", cache_dir='../gadm_cache')
     country_geom = build_single_multipolygon(country_gdf)
 
     # Generate coverage
@@ -178,7 +178,7 @@ def example_8_adaptive_coverage_by_level():
     logger.info("=" * 60)
 
     # Load country
-    country_gdf = download_gadm_country("LUX", cache_dir='./gadm_cache')
+    country_gdf = download_gadm_country("LUX", cache_dir='../gadm_cache')
     country_geom = build_single_multipolygon(country_gdf)
 
     # Generate adaptive coverage
@@ -259,7 +259,7 @@ def example_9_visualize_boxes():
         axes[2].set_axis_off()
 
         plt.tight_layout()
-        plt.savefig('./generated_plot/geohash_boxes_comparison.png', dpi=200, bbox_inches='tight')
+        plt.savefig('../generated_plot/geohash_boxes_comparison.png', dpi=200, bbox_inches='tight')
         logger.info("Visualization saved to: geohash_boxes_comparison.png")
 
     except ImportError:
@@ -367,7 +367,7 @@ def example_10_isolated_polygons():
         axes[1, 1].set_axis_off()
 
         plt.tight_layout()
-        plt.savefig('./generated_plot/geohash_isolated_polygons.png', dpi=200, bbox_inches='tight')
+        plt.savefig('../generated_plot/geohash_isolated_polygons.png', dpi=200, bbox_inches='tight')
         logger.info("Visualization saved to: geohash_isolated_polygons.png")
 
         # Additional analysis

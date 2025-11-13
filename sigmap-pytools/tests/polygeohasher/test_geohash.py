@@ -3,7 +3,7 @@ Unit tests for geohash.py
 """
 import geopandas as gpd
 import pytest
-from sigmap.polygeohasher.utils.geohash import (
+from src.sigmap.polygeohasher.utils.geohash import (
     lonlat_res_for_length,
     encode_geohash,
     candidate_geohashes_covering_bbox,

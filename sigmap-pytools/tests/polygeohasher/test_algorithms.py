@@ -5,7 +5,7 @@ import pytest
 from shapely.geometry import box, Polygon
 from shapely.prepared import prep
 import geopandas as gpd
-from sigmap.polygeohasher.utils.algorithms import check_tile_coverage_with_prepared, SRTree
+from src.sigmap.polygeohasher.utils.algorithms import check_tile_coverage_with_prepared, SRTree
 
 class TestCheckTileCoverage:
     """Test suite for check_tile_coverage_with_prepared function"""

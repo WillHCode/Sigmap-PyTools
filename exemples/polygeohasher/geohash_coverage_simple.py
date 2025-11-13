@@ -50,7 +50,7 @@ if __name__ == '__main__':
     ISO3 = "BEL"
     MIN_LEVEL = 2
     MAX_LEVEL = 5
-    CACHE_DIR = './gadm_cache'
+    CACHE_DIR = '../gadm_cache'
 
     country_dataframe = download_gadm_country(ISO3, cache_dir=CACHE_DIR)
 
