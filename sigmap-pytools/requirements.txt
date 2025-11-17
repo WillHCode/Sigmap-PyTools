@@ -4,4 +4,5 @@ requests~=2.32.5
 numpy~=2.3.3
 pandas~=2.3.3
 pytest~=8.4.2
+copernicusmarine
 matplotlib
