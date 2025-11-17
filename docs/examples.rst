@@ -126,7 +126,7 @@ Convert geohashes to boxes and MultiPolygons:
 
 .. code-block:: python
 
-   from sigmap.polygeohasher.utils.geohash import (
+   from sigmap.polygeohasher import (
        geohashes_to_boxes,
        geohashes_to_multipolygon,
        get_geohash_children
@@ -169,7 +169,7 @@ Compare individual boxes with dissolved and separate MultiPolygons:
 
    import matplotlib.pyplot as plt
    import geopandas as gpd
-   from sigmap.polygeohasher.utils.geohash import (
+   from sigmap.polygeohasher import (
        geohashes_to_boxes,
        geohashes_to_multipolygon
    )
@@ -228,7 +228,7 @@ Visualize how dissolved MultiPolygons handle isolated (disjoint) polygons:
 
    import matplotlib.pyplot as plt
    import geopandas as gpd
-   from sigmap.polygeohasher.utils.geohash import (
+   from sigmap.polygeohasher import (
        geohashes_to_boxes,
        geohashes_to_multipolygon
    )
@@ -309,10 +309,12 @@ Complete workflow from downloading a country to creating a MultiPolygon from cov
 
 .. code-block:: python
 
-   from sigmap.polygeohasher.utils.gadm_download import download_gadm_country
-   from sigmap.polygeohasher.utils.geohash import geohashes_to_multipolygon
-   from sigmap.polygeohasher.utils.polygons import build_single_multipolygon
-   from sigmap.polygeohasher.adaptative_geohash_coverage import geohash_coverage
+   from sigmap.polygeohasher import (
+       download_gadm_country,
+       geohashes_to_multipolygon,
+       build_single_multipolygon,
+       geohash_coverage
+   )
 
    # Load country
    country_gdf = download_gadm_country("LUX", cache_dir='./gadm_cache')

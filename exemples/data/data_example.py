@@ -29,7 +29,7 @@ from sigmap.data import (
     fetch_chelsa_temperature,
     list_chelsa_variables,
 )
-from sigmap.polygeohasher.logger import logging
+from sigmap.logger import logging
 
 logger = logging.getLogger(__name__)
 

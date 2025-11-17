@@ -1,16 +1,14 @@
-from sigmap.polygeohasher.utils.gadm_download import download_gadm_country
-from sigmap.polygeohasher.utils.geohash import (
+from sigmap.polygeohasher import (
+    download_gadm_country,
+    build_single_multipolygon,
     geohashes_to_boxes,
     geohashes_to_multipolygon,
-    get_geohash_children
-)
-from sigmap.polygeohasher.utils.polygons import build_single_multipolygon
-from sigmap.polygeohasher.adaptative_geohash_coverage import (
+    get_geohash_children,
     adaptive_geohash_coverage,
     geohash_coverage
 )
 
-from sigmap.polygeohasher.logger import logging
+from sigmap.logger import logging
 
 logger = logging.getLogger(__name__)
 

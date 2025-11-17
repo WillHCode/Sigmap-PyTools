@@ -13,6 +13,8 @@ from typing import Optional, Union, List, Tuple, Dict, Any
 
 from copernicusmarine import CopernicusMarineProduct
 
+from ..utils.polygons import geometry_to_bbox
+
 try:
     import copernicusmarine
     COPERNICUS_AVAILABLE = True
@@ -36,8 +38,8 @@ except ImportError:
 
 from shapely.geometry import Polygon, MultiPolygon, Point
 
-from ..polygeohasher.logger import logging
-from ..polygeohasher.utils.geohash import geohash_to_bbox, geohashes_to_boxes
+from sigmap.logger import logging
+from ..utils.polygons import geohashes_to_boxes
 
 logger = logging.getLogger(__name__)
 
@@ -57,51 +59,6 @@ def _check_xarray_available():
             "xarray and numpy are required for geometry masking. "
             "Install with: pip install xarray numpy"
         )
-
-
-def _geometry_to_bbox(
-        geometry: Union[Polygon, MultiPolygon, str, List[str], None]
-) -> Tuple[float, float, float, float]:
-    """
-    Convert various geometry inputs to bounding box (lon_min, lat_min, lon_max, lat_max).
-
-    Parameters
-    ----------
-    geometry : Polygon, MultiPolygon, str, list of str, or None
-        - Shapely Polygon/MultiPolygon
-        - Single geohash string
-        - List of geohash strings
-        - None (returns global bbox)
-
-    Returns
-    -------
-    tuple: (lon_min, lat_min, lon_max, lat_max)
-    """
-    if geometry is None:
-        return -180.0, -90.0, 180.0, 90.0
-
-    if isinstance(geometry, str):
-        # Single geohash
-        return geohash_to_bbox(geometry)
-
-    if isinstance(geometry, list):
-        # List of geohashes
-        boxes = geohashes_to_boxes(geometry)
-        all_bounds = [poly.bounds for poly in boxes.values()]
-        lon_min = min(b[0] for b in all_bounds)
-        lat_min = min(b[1] for b in all_bounds)
-        lon_max = max(b[2] for b in all_bounds)
-        lat_max = max(b[3] for b in all_bounds)
-        return lon_min, lat_min, lon_max, lat_max
-
-    if isinstance(geometry, (Polygon, MultiPolygon)):
-        # Shapely geometry
-        return geometry.bounds
-
-    raise TypeError(
-        f"Unsupported geometry type: {type(geometry)}. "
-        "Expected Polygon, MultiPolygon, geohash string, or list of geohashes."
-    )
 
 
 def _geometry_to_shapely(
@@ -330,12 +287,6 @@ def get_copernicus_coverage(
     Returns
     -------
     dict : Coverage metadata including bbox, time range, variables
-
-    Examples
-    --------
-    >>> coverage = get_copernicus_coverage('cmems_mod_glo_phy_my_0.083deg_P1D-m')
-    >>> print(coverage['bbox'])
-    >>> print(coverage['time_range'])
     """
     _check_copernicus_available()
 
@@ -428,7 +379,7 @@ def fetch_copernicus_data(
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     # Convert geometry to bbox
-    bbox = _geometry_to_bbox(geometry)
+    bbox = geometry_to_bbox(geometry)
     lon_min, lat_min, lon_max, lat_max = bbox
 
     logger.info(f"Fetching Copernicus data:")

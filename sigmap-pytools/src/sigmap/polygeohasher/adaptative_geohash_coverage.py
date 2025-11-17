@@ -8,15 +8,15 @@ from shapely.geometry.multipolygon import MultiPolygon
 from shapely.prepared import prep
 from shapely.strtree import STRtree
 
-from .logger import logging
+from sigmap.logger import logging
 
 logger = logging.getLogger(__name__)
 
-from .utils.algorithms import check_tile_coverage_with_prepared
-from .utils.gadm_download import download_gadm_country
-from .utils.geohash import candidate_geohashes_covering_bbox, geohashes_to_gdf, \
+from ..utils.algorithms import check_tile_coverage_with_prepared
+from ..utils.gadm_download import download_gadm_country
+from ..utils.geohash import candidate_geohashes_covering_bbox, geohashes_to_gdf, \
     geohash_to_polygon, get_geohash_children
-from .utils.polygons import build_single_multipolygon
+from ..utils.polygons import build_single_multipolygon
 
 def _sanitize_country_geometry(country_geom: MultiPolygon, debug: bool = False) -> tuple[MultiPolygon, tuple[
     Any, Any, Any, Any]] | None:

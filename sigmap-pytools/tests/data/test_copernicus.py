@@ -9,7 +9,7 @@ from shapely.geometry import box, MultiPolygon
 
 # Test if copernicus is available, skip if not
 try:
-    from src.sigmap.data.copernicus import (
+    from sigmap.data.copernicus import (
         _geometry_to_bbox,
         list_copernicus_products,
         get_copernicus_coverage,

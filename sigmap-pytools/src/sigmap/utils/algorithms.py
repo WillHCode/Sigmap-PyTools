@@ -4,7 +4,6 @@ from typing import Literal
 from geopandas import GeoDataFrame
 from shapely.geometry.multipolygon import MultiPolygon
 from shapely.geometry.polygon import Polygon
-from shapely.prepared import PreparedGeometry
 from shapely.strtree import STRtree
 
 from ..logger import logging

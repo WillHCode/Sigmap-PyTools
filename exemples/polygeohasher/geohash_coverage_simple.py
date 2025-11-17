@@ -1,10 +1,9 @@
 from shapely import Polygon
-from shapely.geometry.multipolygon import MultiPolygon
 
 from sigmap.polygeohasher import download_gadm_country, build_single_multipolygon, adaptive_geohash_coverage, \
     geohash_coverage
 
-from sigmap.polygeohasher.logger import logging
+from sigmap.logger import logging
 
 logger = logging.getLogger(__name__)
 

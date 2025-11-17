@@ -6,8 +6,7 @@ import geopandas as gpd
 from shapely.geometry import box, Polygon, MultiPolygon, Point, LineString
 from shapely import unary_union
 
-from src.sigmap.polygeohasher.utils.polygons import build_single_multipolygon
-
+from sigmap.utils.polygons import build_single_multipolygon
 
 class TestBuildSingleMultipolygon:
     """Test build_single_multipolygon function"""

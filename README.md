@@ -293,20 +293,33 @@ polygeohasher.plot_geohash_coverage(
 ## 📦 Project Structure
 
 ```
-Geohash/
+Sigmap-PyTools/
 ├── docs/
 ├── exemples/
 │   ├── generated_plot/
-│   ├── geohash_conversion.py
-│   ├── geohash_coverage_simple.py
-│   └── plot_geohash_coverage.py
+│   ├── polygeohasher/
+│   │   ├── geohash_conversion.py
+│   │   ├── geohash_coverage_simple.py
+│   │   └── plot_geohash_coverage.py
+│   └── data/
+│       └── data_example.py
 │
 ├── sigmap-pytools/
-│   ├── src/sigmap/polygeohasher/
-│   │   ├── adaptative_geohash_coverage.py
-│   │   ├── plot_geohash_coverage.py
-│   │   ├── logger.py
-│   │   └── utils/
+│   ├── src/sigmap/
+│   │   ├── polygeohasher/
+│   │   │   ├── adaptative_geohash_coverage.py
+│   │   │   └── plot_geohash_coverage.py
+│   │   ├── utils/
+│   │   │   ├── algorithms.py
+│   │   │   ├── conversion.py
+│   │   │   ├── gadm_download.py
+│   │   │   ├── geohash.py
+│   │   │   └── polygons.py
+│   │   ├── data/
+│   │   │   ├── chelsa.py
+│   │   │   ├── copernicus.py
+│   │   │   └── era5.py
+│   │   └── logger.py
 │   ├── tests/
 │   └── pyproject.toml
 ├── LICENSE

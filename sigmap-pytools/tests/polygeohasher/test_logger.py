@@ -1,11 +1,11 @@
 """
 Unit tests for logger.py
 """
-import pytest
 import logging
-import sys
 from io import StringIO
-from src.sigmap.polygeohasher.logger import ColorFormatter
+
+import pytest
+from sigmap.logger import ColorFormatter
 
 
 class TestColorFormatter:

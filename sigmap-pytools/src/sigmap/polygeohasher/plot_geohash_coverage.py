@@ -10,11 +10,11 @@ from geopandas import GeoDataFrame
 from shapely import MultiPolygon
 from shapely.geometry import box
 
-from .logger import logging
-from .utils.geohash import geohashes_to_gdf
-from .utils.gadm_download import download_gadm_country
-from .utils.polygons import build_single_multipolygon
-from .adaptative_geohash_coverage import adaptive_geohash_coverage, geohash_coverage
+from sigmap.logger import logging
+from ..utils.geohash import geohashes_to_gdf
+from ..utils.gadm_download import download_gadm_country
+from ..utils.polygons import build_single_multipolygon
+from .adaptative_geohash_coverage import adaptive_geohash_coverage
 
 logger = logging.getLogger(__name__)
 

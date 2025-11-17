@@ -5,7 +5,7 @@ import geopandas as gpd
 import pytest
 from shapely.geometry import box, Polygon, MultiPolygon
 
-from src.sigmap.polygeohasher.adaptative_geohash_coverage import adaptive_geohash_coverage
+from sigmap.polygeohasher.adaptative_geohash_coverage import adaptive_geohash_coverage
 
 
 class TestAdaptiveGeohashCoverage:

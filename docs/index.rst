@@ -5,22 +5,36 @@ sigmap-pytools
    :target: https://pypi.org/project/sigmap-pytools/
    :alt: PyPI version
 
-A Python package for downloading and manipulating geometries by subdividing them using geohash. This package provides efficient tools for spatial processing, geohash-based polygon subdivision, and visualization.
+A Python package for downloading and manipulating geometries by subdividing them using geohash. This package provides efficient tools for spatial processing, geohash-based polygon subdivision, visualization, and geospatial data collection.
 
 
 
 What is sigmap-pytools?
 -----------------------
 
-sigmap-pytools is a Python package that enables efficient spatial processing by subdividing polygon geometries using geohash encoding. It provides tools for:
+sigmap-pytools is a Python package that enables efficient spatial processing by subdividing polygon geometries using geohash encoding. The package is organized into three main subpackages:
+
+**polygeohasher** - Geohash-based polygon subdivision and visualization:
 
 * **Geohash-based Polygon Subdivision**: Generate adaptive or fixed-level geohash coverage for any polygon geometry
+* **Flexible Coverage Algorithms**:
+  
+  * Adaptive coverage with multi-level refinement
+  * Single-level coverage for uniform tiling
+* **Visualization Tools**: Plot geohash coverage with customizable styling
+
+**utils** - Low-level utility functions:
+
 * **GADM Integration**: Download country geometries directly from the GADM database
 * **Coordinate Encoding**: Convert coordinates to geohash strings and vice versa
-* **Flexible Coverage Algorithms**: 
-  - Adaptive coverage with multi-level refinement
-  - Single-level coverage for uniform tiling
-* **Visualization Tools**: Plot geohash coverage with customizable styling
+* **Geohash Utilities**: Comprehensive set of tools for geohash manipulation and conversion
+* **Polygon Processing**: Utilities for working with polygon geometries
+
+**data** - Geospatial data collection from multiple sources:
+
+* **Copernicus Marine**: Download ocean and marine data
+* **ERA5**: Access climate reanalysis data via CDS API
+* **CHELSA**: Retrieve high-resolution climate data
 
 Installation
 ------------
