@@ -1,7 +1,7 @@
 import pytest
 from shapely.geometry import Polygon, MultiPolygon, Point
 
-from sigmap.data.test import geojson_to_shape, shape_to_geojson
+from sigmap.utils.conversion import geojson_to_shape, shape_to_geojson
 
 
 # --- Fixtures -----------------------------------------------------------------
