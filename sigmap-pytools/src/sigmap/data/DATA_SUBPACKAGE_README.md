@@ -80,222 +80,14 @@ path = fetch_era5_temperature(
 )
 ```
 
-## Usage Patterns
-
-### 1. Using Polygons/Bounding Boxes
-
-```python
-from shapely.geometry import box, Polygon
-from sigmap.data import fetch_copernicus_data
-
-# Method 1: Bounding box
-belgium = box(2.5, 49.5, 6.4, 51.5)
-
-# Method 2: Custom polygon
-custom_area = Polygon([
-    (2.5, 49.5), (6.4, 49.5),
-    (6.4, 51.5), (2.5, 51.5), (2.5, 49.5)
-])
-
-# Download data
-path = fetch_copernicus_data(
-    product_id='cmems_mod_glo_phy_my_0.083deg_P1D-m',
-    variables=['thetao'],
-    output_path='ocean_temp.nc',
-    geometry=belgium,
-    time_range=('2020-01-01', '2020-01-07')
-)
-```
-
-### 2. Using Geohash Tiles
-
-```python
-from sigmap.data import fetch_era5_data
-
-# Single geohash
-data = fetch_era5_data(
-    variables=['2m_temperature'],
-    output_path='temp.nc',
-    geometry='u151',  # Single geohash
-    time_range=('2020-01-01', '2020-01-07')
-)
-
-# Multiple geohashes
-geohashes = ['u151', 'u154', 'u155']
-data = fetch_era5_data(
-    variables=['2m_temperature', 'total_precipitation'],
-    output_path='climate.nc',
-    geometry=geohashes,
-    time_range=('2020-01-01', '2020-01-31')
-)
-```
-
-### 3. Combining with Adaptive Coverage
-
-```python
-from sigmap.polygeohasher import (
-    download_gadm_country,
-    build_single_multipolygon,
-    adaptive_geohash_coverage
-)
-from sigmap.data import fetch_chelsa_temperature
-
-# Get country geometry
-country_gdf = download_gadm_country('BEL')
-country_geom = build_single_multipolygon(country_gdf)
-
-# Generate adaptive geohash coverage
-geohash_dict, tiles_gdf = adaptive_geohash_coverage(
-    country_geom,
-    min_level=3,
-    max_level=5
-)
-
-# Use level 3 tiles for data download
-level_3_tiles = geohash_dict[3]
-
-# Download data for these tiles
-path = fetch_chelsa_temperature(
-    output_path='chelsa_temp.tif',
-    geometry=level_3_tiles,
-    month=1
-)
-```
-
-## API Reference
-
-### Copernicus Marine
-
-```python
-from sigmap.data import (
-    fetch_copernicus_data,
-    fetch_sea_surface_temperature,
-    fetch_ocean_salinity,
-    list_copernicus_products,
-    get_copernicus_coverage
-)
-
-# Main function
-fetch_copernicus_data(
-    product_id: str,
-    variables: List[str],
-    output_path: Path,
-    geometry: Union[Polygon, str, List[str], None] = None,
-    time_range: Tuple[str, str] = None,
-    depth_range: Tuple[float, float] = None,
-    **kwargs
-) -> Path
-
-# Convenience functions
-fetch_sea_surface_temperature(output_path, geometry, time_range)
-fetch_ocean_salinity(output_path, geometry, time_range)
-
-# Discovery
-list_copernicus_products(keywords=None, contains_bbox=None)
-get_copernicus_coverage(product_id)
-```
-
-### ERA5
-
-```python
-from sigmap.data import (
-    fetch_era5_data,
-    fetch_era5_temperature,
-    fetch_era5_precipitation,
-    fetch_era5_wind,
-    list_era5_variables,
-    get_era5_coverage
-)
-
-# Main function
-fetch_era5_data(
-    variables: List[str],
-    output_path: Path,
-    geometry: Union[Polygon, str, List[str], None] = None,
-    time_range: Tuple[str, str] = None,
-    hours: List[str] = None,
-    dataset: str = 'reanalysis-era5-single-levels',
-    **kwargs
-) -> Path
-
-# Convenience functions
-fetch_era5_temperature(output_path, geometry, time_range)
-fetch_era5_precipitation(output_path, geometry, time_range)
-fetch_era5_wind(output_path, geometry, time_range)
-
-# Discovery
-list_era5_variables(dataset='reanalysis-era5-single-levels')
-get_era5_coverage(dataset='reanalysis-era5-single-levels')
-```
-
-### CHELSA
-
-```python
-from sigmap.data import (
-    fetch_chelsa_data,
-    fetch_chelsa_temperature,
-    fetch_chelsa_precipitation,
-    fetch_chelsa_bioclim,
-    list_chelsa_variables,
-    get_chelsa_coverage
-)
-
-# Main function
-fetch_chelsa_data(
-    variable: str,
-    output_path: Path,
-    geometry: Union[Polygon, str, List[str], None] = None,
-    time_period: str = '1981-2010',
-    scenario: str = None,
-    model: str = None,
-    month: int = None,
-    **kwargs
-) -> Path
-
-# Convenience functions
-fetch_chelsa_temperature(output_path, geometry, time_period, month)
-fetch_chelsa_precipitation(output_path, geometry, time_period, month)
-fetch_chelsa_bioclim(bioclim_variable, output_path, geometry, time_period)
-
-# Discovery
-list_chelsa_variables(dataset='climatologies')
-get_chelsa_coverage(dataset='climatologies')
-```
-
-## Common Variables
-
-### ERA5 Variables
-- **Temperature**: `2m_temperature`, `skin_temperature`, `sea_surface_temperature`
-- **Precipitation**: `total_precipitation`, `convective_precipitation`
-- **Wind**: `10m_u_component_of_wind`, `10m_v_component_of_wind`
-- **Pressure**: `surface_pressure`, `mean_sea_level_pressure`
-- **Radiation**: `surface_solar_radiation_downwards`, `surface_thermal_radiation_downwards`
-
-### CHELSA Variables
-- **Temperature**: `tas` (mean), `tasmin` (minimum), `tasmax` (maximum)
-- **Precipitation**: `pr`
-- **Bioclimatic**: `bio1` to `bio19` (WorldClim-style bioclimatic variables)
-
-### Copernicus Marine Variables
-- **Temperature**: `thetao`
-- **Salinity**: `so`
-- **Currents**: `uo` (eastward), `vo` (northward)
-- **Sea level**: `zos`
-
 ## Examples
 
-See `exemples/data_collection_example.py` for comprehensive examples including:
-
-1. Downloading Copernicus data for a country
-2. Using geohash tiles with ERA5
-3. Downloading CHELSA with bounding boxes
-4. Combining adaptive coverage with data downloads
-5. Listing available variables and products
-6. Comparing data from different sources
-7. Batch downloading for multiple areas
-8. Future climate projections
+See `exemples/data/notebooks` for comprehensive examples using different data sources.
 
 ## Best Practices
+**BE AWARE OF THE FILE SIZES !**
+The more variables you select, the bigger time range is, the higher the resolution is, and so on... Considerably increase the downloaded file sizes.\
+To have an precise value please go to the website of the datasource, for instance Copernicus and ERA5 make you fulfill a form that give you the .zip total size of your request.
 
 ### Area Selection
 - **Small areas** (<1000 km²): Use precise polygons or single geohashes
@@ -360,7 +152,7 @@ except:
 1. **Batch Downloads**: Group requests to minimize API calls
 2. **Geohash Level**: Use appropriate level (3-5 typically optimal)
 3. **Time Chunking**: Download large time ranges in smaller chunks
-4. **Caching**: Set `force_download=False` to reuse existing files
+4. **Caching**: Keep `force_download=False` to reuse existing files
 5. **Parallel Downloads**: Use multiple processes for independent areas
 
 ## Future Enhancements
@@ -372,9 +164,6 @@ Planned additions to the data subpackage:
 - Built-in data validation and quality checks
 - Temporal aggregation utilities
 - Spatial interpolation helpers
-- Integration with xarray for data analysis
-- Progress bars for large downloads
-- Automatic retry logic for failed downloads
 
 ## Contributing
 
